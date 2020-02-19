@@ -1,0 +1,57 @@
+= Collection of Neo4j Docker Compose files
+
+This repository contains a few compose files to quickly fire up various various configurations.
+All configurations create files beneath `$HOME/tmp/docker/`, with each configuration in its own directory structure.
+
+== Simple Cluster
+Defines a simple causal cluster with 3 cores and 1 read replica. No default database definded, so will fall back to default 'neo4j'. APOC is included.
+
+ * Browser URL: http://localhost:7474
+ * Bolt: neo4j://localhost:7687
+ * User: neo4j
+ * Password: changeme
+
+== Fabric (Dev)
+Starts a single Neo4j 4. 0 instance with Fabric enabled. The Fabric database name is `example`. This setup follows the https://neo4j.com/docs/operations-manual/current/fabric/configuration/#_development_setup_example[Development setup example] in the operations manual.
+
+image:https://neo4j.com/docs/operations-manual/current/images/fabric-minimal-setting.png[Fabric minimal setup]
+
+ * Browser URL: http://localhost:7474
+ * Bolt: neo4j://localhost:7687
+ * User: neo4j
+ * Password: changeme
+
+Database `db1` is created as default database. `db2` needs to be created via
+[source]
+----
+:use system
+create database db2
+----
+
+The availability of `db2` can be checked with `show databases`.
+
+== Fabric Cluster
+Starts a causal cluster with 3 cores and 2 Fabric instances, as described in https://neo4j.com/docs/operations-manual/current/fabric/configuration/#_cluster_setup_with_no_single_point_of_failure_example[Cluster setup with no single point of failure example] in the operations manual. The ports divert slightly as to avoid port clashes (all run on localhost).
+image:https://neo4j.com/docs/operations-manual/current/images/fabric-setting.png[Fabric setting with Causal Cluster].
+
+Database `db1` is created as default database. `db2` and `db3` need to be created via
+[source]
+----
+:use system
+create database db2
+create database db3
+----
+
+Not all ports of the contained instances are available on the docker host. The HTTP port of `Server1` is passed to the host, so that the Neo4j browser can be reached. From there, all Bolt ports are available.
+
+For a visual description of the port mapping see
+image::doc/img/FabricCluster.svg[cluster / port setup]
+
+ * Browser URL: http://localhost:47474/ or http://localhost:57474/
+ * Bolt (Fabric): neo4j://localhost:47687 or neo4j://localhost:57687
+ * Bolt (Cluster): these are only needed to administer the cluster databases
+ ** neo4j://localhost:17687 or
+ ** neo4j://localhost:27687 or
+ ** neo4j://localhost:37687
+ * User: neo4j
+ * Password: changeme
