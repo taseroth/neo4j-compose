@@ -47,7 +47,7 @@ create database db3
 Not all ports of the contained instances are available on the docker host. The HTTP port of `Server1` is passed to the host, so that the Neo4j browser can be reached. From there, all Bolt ports are available.
 
 For a visual description of the port mapping see
-image::FabricCluster.svg[cluster / port setup]
+image::FabricCluster.png[cluster / port setup]
 
  * Browser URL: http://localhost:47474/ or http://localhost:57474/
  * Bolt (Fabric): neo4j://localhost:47687 or neo4j://localhost:57687
