@@ -1,7 +1,5 @@
 = Collection of Neo4j Docker Compose files
 
-:imagesdir: adoc/img/
-
 This repository contains a few compose files to quickly fire up various various configurations.
 All configurations create files beneath `$HOME/tmp/docker/`, with each configuration in its own directory structure.
 
@@ -47,7 +45,9 @@ create database db3
 Not all ports of the contained instances are available on the docker host. The HTTP port of `Server1` is passed to the host, so that the Neo4j browser can be reached. From there, all Bolt ports are available.
 
 For a visual description of the port mapping see
-image::FabricCluster.png[cluster / port setup]
+
+.Portmapping and instances
+image::adoc/img/FabricCluster.svg[Portmapping and instances]
 
  * Browser URL: http://localhost:47474/ or http://localhost:57474/
  * Bolt (Fabric): neo4j://localhost:47687 or neo4j://localhost:57687
