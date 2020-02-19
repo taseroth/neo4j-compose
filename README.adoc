@@ -1,6 +1,6 @@
 = Collection of Neo4j Docker Compose files
 
-:imagesdir: img/
+:imagesdir: adoc/img/
 
 This repository contains a few compose files to quickly fire up various various configurations.
 All configurations create files beneath `$HOME/tmp/docker/`, with each configuration in its own directory structure.
