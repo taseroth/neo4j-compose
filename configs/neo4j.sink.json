@@ -1,0 +1,21 @@
+{
+  "name": "Neo4jSinkConnector",
+  "config": {
+    "topics": "users",
+    "connector.class": "streams.kafka.connect.sink.Neo4jSinkConnector",
+    "kafka.key.deserializer":"org.apache.kafka.common.serialization.ByteArrayDeserializer",
+    "kafka.value.deserializer":"org.apache.kafka.common.serialization.ByteArrayDeserializer",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable":"false",
+    "errors.retry.timeout": "-1",
+    "errors.retry.delay.max.ms": "1000",
+    "errors.tolerance": "all",
+    "errors.log.enable": true,
+    "errors.log.include.messages": true,
+    "neo4j.server.uri": "bolt://neo4j:17687",
+    "neo4j.authentication.basic.username": "neo4j",
+    "neo4j.authentication.basic.password": "changeme",
+    "neo4j.topic.cypher.users": "MERGE (u:User{id: event.userid}) on create set u.registertime=event.registertime, u.gender=event.gender , u.source='datagen'  MERGE (r:Region{id: event.regionid}) MERGE (u)-[:FROM]->(r)"
+  }
+}
