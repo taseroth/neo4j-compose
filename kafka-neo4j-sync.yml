@@ -10,11 +10,26 @@
 #   + browser: localhost:27474
 #   + bolt: localhost:27687
 
-# load the streams plugin into Neo4j 3.5:
+# load the streams plugin into Neo4j 3.5: (needed for cdc)
 # mkdir -p $HOME/tmp/docker/kafka-neo4j-sync/neo4j35/plugins
 # curl -L  https://github.com/neo4j-contrib/neo4j-streams/releases/download/3.5.6/neo4j-streams-3.5.6.jar --output $HOME/tmp/docker/kafka-neo4j-sync/neo4j35/plugins/neo4j-streams-3.5.6.jar --silent
-# mkdir -p $HOME/tmp/docker/kafka-neo4j-sync/neo4j40/plugins
-# curl -L  https://github.com/neo4j-contrib/neo4j-streams/releases/download/4.0.0/neo4j-streams-4.0.0.jar --output $HOME/tmp/docker/kafka-neo4j-sync/neo4j40/plugins/neo4j-streams-4.0.0.jar --silent
+
+# Once the services are loaded and running, activate the Connect plugin:
+#
+# sourceId strategy:
+# curl -X POST http://localhost:8083/connectors \
+#  -H 'Content-Type:application/json' \
+#  -H 'Accept:application/json' \
+#  -d @configs/neo4j-sync-sourceId.json
+
+# schema strategy:
+# curl -X POST http://localhost:8083/connectors \
+#  -H 'Content-Type:application/json' \
+#  -H 'Accept:application/json' \
+#  -d @configs/neo4j-sync-schema.json
+
+# mapped volumes are created under $HOME/tmp/docker/kafka-neo4j-sync/
+
 version: '3'
 
 networks:
@@ -81,12 +96,9 @@ services:
       - NEO4J_dbms_connector_bolt_listen__address=:27687
       - NEO4J_dbms_default__database=db1
       - NEO4JLABS_PLUGINS=["apoc"]
-      - NEO4J_kafka_zookeeper_connect=zookeeper:2181
-      - NEO4J_kafka_bootstrap_servers=broker:9093
-      - NEO4J_streams_sink_enabled_to_db1=true
-      - NEO4J_streams_source_enabled=false
-      - NEO4J_streams_sink_topic_cdc_sourceId_to_db1=neo4j
-      - NEO4J_streams_source_schema_polling_interval=10000
+      - NEO4J_dbms_logs_query_enabled=INFO
+      - NEO4J_dbms_logs_query_parameter__logging__enabled=true
+      - NEO4J_dbms_allow__upgrade=true
 
   zookeeper:
     image: confluentinc/cp-zookeeper
@@ -122,7 +134,6 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,OUTSIDE:PLAINTEXT
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9093,OUTSIDE://0.0.0.0:9092
       CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: broker:9093
-      # workaround if we change to a custom name the schema_registry fails to start
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
@@ -191,7 +202,7 @@ services:
 #      - bash
 #      - -c
 #      - |
-#      confluent-hub install --no-prompt neo4j/kafka-connect-neo4j:1.0.0
+#      confluent-hub install --no-prompt neo4j/kafka-connect-neo4j:1.0.7
 #        /etc/confluent/docker/run
 
   control-center:
