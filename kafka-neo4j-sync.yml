@@ -198,12 +198,13 @@ services:
       CONNECT_ZOOKEEPER_CONNECT: 'zookeeper:2181'
       CONNECT_PLUGIN_PATH: /usr/share/java,/tmp/connect-plugins,/usr/share/confluent-hub-components
       CONNECT_LOG4J_LOGGERS: org.apache.zookeeper=WARN,org.I0Itec.zkclient=WARN,org.reflections=ERROR
-#    command:
-#      - bash
-#      - -c
-#      - |
-#      confluent-hub install --no-prompt neo4j/kafka-connect-neo4j:1.0.7
-#        /etc/confluent/docker/run
+    command:
+      - bash
+      - -c
+      - |
+        confluent-hub install --no-prompt neo4j/kafka-connect-neo4j:1.0.7
+        confluent-hub install --no-prompt jcustenborder/kafka-connect-twitter:0.3.33
+        /etc/confluent/docker/run
 
   control-center:
     image: confluentinc/cp-enterprise-control-center
