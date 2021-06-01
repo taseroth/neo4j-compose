@@ -11,6 +11,9 @@ Defines a simple causal cluster with 3 cores and 1 read replica. No default data
  * User: neo4j
  * Password: changeme
 
+== Simple Cluster with SSL
+Same as the above, but with self-signed ssl certificates. See the compose file for details.
+
 == Fabric (Dev)
 Starts a single Neo4j 4. 0 instance with Fabric enabled. The Fabric database name is `example`. This setup follows the https://neo4j.com/docs/operations-manual/current/fabric/configuration/#_development_setup_example[Development setup example] in the operations manual.
 
