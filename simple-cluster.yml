@@ -7,7 +7,7 @@ services:
 
   core1:
     hostname: core1
-    image: neo4j:4.0-enterprise
+    image: neo4j:4.2-enterprise
     networks:
       - cluster_net
     ports:
@@ -35,7 +35,7 @@ services:
 
   core2:
     hostname: core2
-    image: neo4j:4.0-enterprise
+    image: neo4j:4.2-enterprise
     networks:
       - cluster_net
     ports:
@@ -63,7 +63,7 @@ services:
 
   core3:
     hostname: core3
-    image: neo4j:4.0-enterprise
+    image: neo4j:4.2-enterprise
     networks:
       - cluster_net
     ports:
@@ -91,7 +91,7 @@ services:
 
   read1:
     hostname: read1
-    image: neo4j:4.0-enterprise
+    image: neo4j:4.2-enterprise
     networks:
       - cluster_net
     ports:
