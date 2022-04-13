@@ -1,3 +1,4 @@
+# same as simple-cluster, but with server-side-routing (ssr) https://neo4j.com/docs/operations-manual/current/clustering/internals/#causal-clustering-routing
 version: '3'
 
 networks:
@@ -24,6 +25,9 @@ services:
       - NEO4J_AUTH=neo4j/changeme
       - NEO4J_dbms_mode=CORE
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_dbms_routing_enabled=true
+      - NEO4J_dbms_routing_listen__address=0.0.0.0:8881
+      - NEO4J_dbms_routing_advertised__address=core1:8881
       - NEO4J_causal__clustering_minimum__core__cluster__size__at__formation=3
       - NEO4J_causal__clustering_minimum__core__cluster__size__at__runtime=3
       - NEO4J_causal__clustering_initial__discovery__members=core1:5000,core2:5000,core3:5000
@@ -52,6 +56,9 @@ services:
       - NEO4J_AUTH=neo4j/changeme
       - NEO4J_dbms_mode=CORE
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_dbms_routing_enabled=true
+      - NEO4J_dbms_routing_listen__address=0.0.0.0:8881
+      - NEO4J_dbms_routing_advertised__address=core2:8881
       - NEO4J_causal__clustering_minimum__core__cluster__size__at__formation=3
       - NEO4J_causal__clustering_minimum__core__cluster__size__at__runtime=3
       - NEO4J_causal__clustering_initial__discovery__members=core1:5000,core2:5000,core3:5000
@@ -80,6 +87,9 @@ services:
       - NEO4J_AUTH=neo4j/changeme
       - NEO4J_dbms_mode=CORE
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_dbms_routing_enabled=true
+      - NEO4J_dbms_routing_listen__address=0.0.0.0:8881
+      - NEO4J_dbms_routing_advertised__address=core3:8881
       - NEO4J_causal__clustering_minimum__core__cluster__size__at__formation=3
       - NEO4J_causal__clustering_minimum__core__cluster__size__at__runtime=3
       - NEO4J_causal__clustering_initial__discovery__members=core1:5000,core2:5000,core3:5000
