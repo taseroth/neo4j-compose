@@ -17,7 +17,7 @@ Same as the above, but with self-signed ssl certificates. See the compose file f
 == Fabric (Dev)
 Starts a single Neo4j 4. 0 instance with Fabric enabled. The Fabric database name is `example`. This setup follows the https://neo4j.com/docs/operations-manual/current/fabric/configuration/#_development_setup_example[Development setup example] in the operations manual.
 
-image:https://neo4j.com/docs/operations-manual/current/images/fabric-minimal-setting.png[Fabric minimal setup]
+image:https://neo4j.com/docs/operations-manual/4.0/_images/fabric-single-instance.png[Fabric minimal setup]
 
  * Browser URL: http://localhost:7474
  * Bolt: neo4j://localhost:7687
@@ -35,7 +35,7 @@ The availability of `db2` can be checked with `show databases`.
 
 == Fabric Cluster
 Starts a causal cluster with 3 cores and 2 Fabric instances, as described in https://neo4j.com/docs/operations-manual/current/fabric/configuration/#_cluster_setup_with_no_single_point_of_failure_example[Cluster setup with no single point of failure example] in the operations manual. The ports divert slightly as to avoid port clashes (all run on localhost).
-image:https://neo4j.com/docs/operations-manual/current/images/fabric-setting.png[Fabric setting with Causal Cluster].
+image:https://neo4j.com/docs/operations-manual/current/_images/fabric-setting.png[Fabric setting with Causal Cluster].
 
 Database `db1` is created as default database. `db2` and `db3` need to be created via
 [source]
