@@ -1,10 +1,10 @@
 = Collection of Neo4j Docker Compose files
 
-This repository contains a few compose files to quickly fire up various various configurations.
+This repository contains a few compose files to quickly fire up various configurations.
 All configurations create files beneath `$HOME/tmp/docker/`, with each configuration in its own directory structure.
 
 == Simple Cluster
-Defines a simple causal cluster with 3 cores and 1 read replica. No default database definded, so will fall back to default 'neo4j'. APOC is included.
+Defines a simple causal cluster with 3 cores and 1 read replica. No default database defined, so will fall back to default 'neo4j'. APOC is included.
 
  * Browser URL: http://localhost:7474
  * Bolt: neo4j://localhost:7687
