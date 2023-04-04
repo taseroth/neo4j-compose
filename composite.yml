@@ -84,7 +84,9 @@ services:
       context: .
       dockerfile: composite.Dockerfile
       args:
-        KEYSTORE_PWD: secret
+        NEO4J_dbms_security_keystore_password: secret
+        NEO4J_dbms_security_key_name: composite
+        NEO4J_dbms_security_keystore_path: /var/lib/neo4j/composite.keystore
     networks:
       - cluster_net
     links:
