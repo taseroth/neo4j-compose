@@ -16,6 +16,7 @@ services:
       - "17474:17474"
     volumes:
       - $HOME/tmp/docker/composite/neo4j-prime1/conf:/conf
+      - $HOME/tmp/docker/composite/neo4j-prime1/import:/import
       - $HOME/tmp/docker/composite/neo4j-prime1/data:/data
       - $HOME/tmp/docker/composite/neo4j-prime1/logs:/logs
       - $HOME/tmp/docker/composite/neo4j-prime1/metrics:/metrics
@@ -40,6 +41,7 @@ services:
       - "27474:27474"
     volumes:
       - $HOME/tmp/docker/composite/neo4j-prime2/conf:/conf
+      - $HOME/tmp/docker/composite/neo4j-prime1/import:/import
       - $HOME/tmp/docker/composite/neo4j-prime2/data:/data
       - $HOME/tmp/docker/composite/neo4j-prime2/logs:/logs
       - $HOME/tmp/docker/composite/neo4j-prime2/metrics:/metrics
@@ -64,6 +66,7 @@ services:
       - "37474:37474"
     volumes:
       - $HOME/tmp/docker/composite/neo4j-prime3/conf:/conf
+      - $HOME/tmp/docker/composite/neo4j-prime1/import:/import
       - $HOME/tmp/docker/composite/neo4j-prime3/data:/data
       - $HOME/tmp/docker/composite/neo4j-prime3/logs:/logs
       - $HOME/tmp/docker/composite/neo4j-prime3/metrics:/metrics
