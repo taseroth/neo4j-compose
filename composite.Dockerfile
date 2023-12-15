@@ -1,4 +1,4 @@
-FROM neo4j:5.6-enterprise
+FROM neo4j:5.14-enterprise
 ARG KEYSTORE_PASSWORD
 ARG KEY_NAME
 ARG KEYSTORE_PATH
