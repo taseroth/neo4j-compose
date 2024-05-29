@@ -14,7 +14,7 @@
     "neo4j.server.uri": "bolt://neo4j40:27687",
     "neo4j.authentication.basic.username": "neo4j",
     "neo4j.authentication.basic.password": "changeme",
-    "streams.sink.topic.cdc.schema.to.db1": "neo4j",
+    "streams.sink.topic.cdc.schema.to.neo4j": "neo4j",
     "neo4j.topic.cdc.schema": "neo4j",
     "streams.sink.errors.deadletterqueue.topic.name": "sync_dlq"
   }

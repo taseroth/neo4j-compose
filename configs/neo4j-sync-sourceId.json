@@ -15,7 +15,7 @@
     "neo4j.authentication.basic.username": "neo4j",
     "neo4j.authentication.basic.password": "changeme",
     "neo4j.topic.cdc.sourceId": "neo4j",
-    "streams.sink.topic.cdc.sourceId.to.db1": "neo4j",
+    "streams.sink.topic.cdc.sourceId.to.neo4j": "neo4j",
     "streams.sink.errors.deadletterqueue.topic.name": "sync_dlq"
   }
 }
