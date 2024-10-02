@@ -1,0 +1,22 @@
+{
+  "name": "Neo4jSinkConnector",
+  "config": {
+    "connector.class": "org.neo4j.connectors.kafka.sink.Neo4jConnector",
+    "neo4j.uri": "bolt://neo4j:7687",
+    "neo4j.authentication.type": "BASIC",
+    "neo4j.authentication.basic.username": "neo4j",
+    "neo4j.authentication.basic.password": "changeme",
+    "neo4j.cdc.schema.topics": "neo4j-sync",
+    "topics": "neo4j-sync",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false",
+    "key.converter.schemas.enable": "false",
+    "schemas.enable": "false",
+    "errors.log.enable": "true",
+    "errors.log.include.messages": "true",
+    "errors.retry.timeout": "300",
+    "errors.tolerance": "none",
+    "errors.deadletterqueue.topic.name": "neo4j-dead-letter"
+  }
+}

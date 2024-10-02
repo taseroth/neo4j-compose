@@ -11,7 +11,7 @@
     "errors.tolerance": "all",
     "errors.log.enable": true,
     "errors.log.include.messages": true,
-    "neo4j.server.uri": "bolt://neo4j40:27687",
+    "neo4j.server.uri": "bolt://neo4j5:27687",
     "neo4j.authentication.basic.username": "neo4j",
     "neo4j.authentication.basic.password": "changeme",
     "streams.sink.topic.cdc.schema.to.neo4j": "neo4j",
