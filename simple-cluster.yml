@@ -7,7 +7,7 @@ services:
 
   srv1:
     hostname: srv1
-    image: neo4j:5.14-enterprise
+    image: neo4j:5.26-enterprise
     networks:
       - cluster_net
     ports:
@@ -31,7 +31,7 @@ services:
 
   srv2:
     hostname: srv2
-    image: neo4j:5.14-enterprise
+    image: neo4j:5.26-enterprise
     networks:
       - cluster_net
     ports:
@@ -55,7 +55,7 @@ services:
 
   srv3:
     hostname: srv3
-    image: neo4j:5.14-enterprise
+    image: neo4j:5.26-enterprise
     networks:
       - cluster_net
     ports:
@@ -79,7 +79,7 @@ services:
 
   srv4:
     hostname: srv4
-    image: neo4j:5.14-enterprise
+    image: neo4j:5.26-enterprise
     networks:
       - cluster_net
     ports:
@@ -103,7 +103,7 @@ services:
 
   secondary1:
     hostname: secondary1
-    image: neo4j:5.14-enterprise
+    image: neo4j:5.26-enterprise
     networks:
       - cluster_net
     ports:
