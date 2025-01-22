@@ -7,7 +7,7 @@ services:
 
   srv1:
     hostname: srv1
-    image: neo4j:5.26-enterprise
+    image: neo4j:5.26.1-enterprise
     networks:
       - cluster_net
     ports:
@@ -19,8 +19,8 @@ services:
       - $HOME/tmp/docker/cluster-simple/neo4j-srv1/logs:/logs
       - $HOME/tmp/docker/cluster-simple/neo4j-srv1/metrics:/metrics
     environment:
-      - NEO4J_AUTH=neo4j/changeme
-      - NEO4J_initial_server_mode__constraint=PRIMARY
+      - NEO4J_AUTH=neo4j/secret
+      - NEO4J_dbms_security_auth__minimum__password__length=4
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
       - NEO4J_server_default__listen__address=0.0.0.0
       - NEO4J_server_default__advertised__address=srv1
@@ -31,7 +31,7 @@ services:
 
   srv2:
     hostname: srv2
-    image: neo4j:5.26-enterprise
+    image: neo4j:5.26.1-enterprise
     networks:
       - cluster_net
     ports:
@@ -43,8 +43,8 @@ services:
       - $HOME/tmp/docker/cluster-simple/neo4j-srv2/logs:/logs
       - $HOME/tmp/docker/cluster-simple/neo4j-srv2/metrics:/metrics
     environment:
-      - NEO4J_AUTH=neo4j/changeme
-      - NEO4J_initial_server_mode__constraint=PRIMARY
+      - NEO4J_AUTH=neo4j/secret
+      - NEO4J_dbms_security_auth__minimum__password__length=4
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
       - NEO4J_server_default__listen__address=0.0.0.0
       - NEO4J_server_default__advertised__address=srv2
@@ -55,7 +55,7 @@ services:
 
   srv3:
     hostname: srv3
-    image: neo4j:5.26-enterprise
+    image: neo4j:5.26.1-enterprise
     networks:
       - cluster_net
     ports:
@@ -67,8 +67,8 @@ services:
       - $HOME/tmp/docker/cluster-simple/neo4j-srv3/logs:/logs
       - $HOME/tmp/docker/cluster-simple/neo4j-srv3/metrics:/metrics
     environment:
-      - NEO4J_AUTH=neo4j/changeme
-      - NEO4J_initial_server_mode__constraint=PRIMARY
+      - NEO4J_AUTH=neo4j/secret
+      - NEO4J_dbms_security_auth__minimum__password__length=4
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
       - NEO4J_server_default__listen__address=0.0.0.0
       - NEO4J_server_default__advertised__address=srv3
@@ -79,7 +79,7 @@ services:
 
   srv4:
     hostname: srv4
-    image: neo4j:5.26-enterprise
+    image: neo4j:5.26.1-enterprise
     networks:
       - cluster_net
     ports:
@@ -91,8 +91,8 @@ services:
       - $HOME/tmp/docker/cluster-simple/neo4j-srv4/logs:/logs
       - $HOME/tmp/docker/cluster-simple/neo4j-srv4/metrics:/metrics
     environment:
-      - NEO4J_AUTH=neo4j/changeme
-      - NEO4J_initial_server_mode__constraint=PRIMARY
+      - NEO4J_AUTH=neo4j/secret
+      - NEO4J_dbms_security_auth__minimum__password__length=4
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
       - NEO4J_server_default__listen__address=0.0.0.0
       - NEO4J_server_default__advertised__address=srv4
@@ -103,7 +103,7 @@ services:
 
   secondary1:
     hostname: secondary1
-    image: neo4j:5.26-enterprise
+    image: neo4j:5.26.1-enterprise
     networks:
       - cluster_net
     ports:
@@ -115,7 +115,8 @@ services:
       - $HOME/tmp/docker/cluster-simple/neo4j-secondary1/logs:/logs
       - $HOME/tmp/docker/cluster-simple/neo4j-secondary1/metrics:/metrics
     environment:
-      - NEO4J_AUTH=neo4j/changeme
+      - NEO4J_AUTH=neo4j/secret
+      - NEO4J_dbms_security_auth__minimum__password__length=4
       - NEO4J_initial_server_mode__constraint=SECONDARY
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
       - NEO4J_server_default__listen__address=0.0.0.0
